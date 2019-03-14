@@ -1,0 +1,5 @@
+rootProject.name = 'todo-multi'
+include 'model'
+include 'repository'
+include 'web'
+

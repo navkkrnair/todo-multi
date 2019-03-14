@@ -1,0 +1,33 @@
+allprojects {
+    group = 'com.todo'
+    version = 1.0
+}
+
+subprojects {
+    apply plugin: 'java'
+}
+project('model') {
+}
+
+project('repository') {
+
+    dependencies {
+        compile project (':model')
+    }
+}
+
+project('web') {
+    apply plugin: 'war'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile project (':repository')
+        providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+        providedRuntime group: 'javax.servlet', name: 'jstl', version: '1.2'
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+
+}
